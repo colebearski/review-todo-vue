@@ -36,6 +36,12 @@ export default {
   },
   methods: {
     deleteTodo(id) {
+      axios
+        .delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
+
+      // can be supplied in the promise
       this.todos = this.todos.filter(todo => todo.id !== id);
     },
     addTodo(newTodo) {
@@ -47,6 +53,7 @@ export default {
         .then(res => console.log(res))
         .catch(err => console.log(err));
 
+      // can be supplied in the promise
       this.todos = [...this.todos, newTodo];
     }
   },
